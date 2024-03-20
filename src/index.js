@@ -1,7 +1,4 @@
-import { IncrementalGame } from "./game.js";
-
 const menu = document.querySelector("#upgrade-menu")
-const Game = new IncrementalGame(100);
 
 document.addEventListener("contextmenu", (e) => {
     e.preventDefault()
@@ -20,6 +17,3 @@ function ToggleUpgrades(element) {
 function CloseMenus() {
     menu.classList.remove("visible")
 }
-
-let money = Game.getMoney();
-console.log(money);
