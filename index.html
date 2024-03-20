@@ -7,6 +7,35 @@
 
 <body>
 
+<div class="ship-container">
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+    <div onclick="ToggleUpgrades(this)" class="ship-grid"></div>
+</div>
+
+<div id="upgrade-menu">
+    <div class="upgrade-item"><img src="Images/Speed-1.png" alt="Speed 1"></div>
+    <div class="upgrade-arrow"></div>
+    <div class="upgrade-item"><img src="Images/Speed-2.png" alt="Speed 2"></div>
+    <div class="upgrade-arrow"></div>
+    <div class="upgrade-item"><img src="Images/Speed-3.png" alt="Speed 3"></div>
+    <div class="upgrade-item"><img src="Images/Efficiency-1.png" alt="Efficiency 1"></div>
+    <div class="upgrade-arrow"></div>
+    <div class="upgrade-item"><img src="Images/Efficiency-2.png" alt="Efficiency 2"></div>
+    <div class="upgrade-arrow"></div>
+    <div class="upgrade-item"><img src="Images/Efficiency-3.png" alt="Efficiency 3"></div>
+    <div onclick="event.stopPropagation(); CloseMenus()" class="menu-closer"><img src="Images/Close.png" alt=""></div>
+</div>
+
 </body>
-<script defer src="index.js"></script>
+<script defer type="module" src="index.js"></script>
 </html>
