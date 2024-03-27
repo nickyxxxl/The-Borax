@@ -1,6 +1,7 @@
 {
   "name": "my-project",
   "source": "src/index.html",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "start": "parcel",
     "dev": "parcel",

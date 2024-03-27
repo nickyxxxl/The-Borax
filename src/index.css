@@ -84,7 +84,6 @@ body {
     flex-basis: calc(33% - 2.5vw);
     height: 4.5vw;
     margin: 0.5vw;
-    background-color: yellow;
     box-sizing: border-box;
 
     outline: solid 0px black;
@@ -111,4 +110,65 @@ img {
     border-width: 0 3px 3px 0;
     display: inline-block;
     transform: rotate(-45deg);
+}
+
+.ship-grid > .tile-tree {
+    height: 100%;
+    width: 100%;
+    background-color: greenyellow;
+}
+.ship-grid > .tile-empty {
+    height: 100%;
+    width: 100%;
+    background-color: yellow;
+}
+
+#building-menu {
+    left: 110%;
+    bottom: -20%;
+    width: 200%;
+    /* height: 100%; */
+    visibility: collapse;
+    position: relative;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    z-index: 1;
+    background-color: goldenrod;
+    opacity: 0%;
+    transition: 0.3s;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-content: center;
+}
+#building-menu:hover {
+    box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.6);
+}
+#building-menu.visible {
+    visibility: visible;
+    opacity: 100%;
+    bottom: 10%;
+    transition: 0.3s;
+}
+#building-menu .menu-closer {
+    width: 3vw;
+    height: 3vw;
+    position: absolute;
+    right: 0px;
+    opacity: inherit;
+}
+
+.building-item {
+    flex-basis: calc(33% - 2.5vw);
+    height: 4.5vw;
+    margin: 0.5vw;
+    box-sizing: border-box;
+
+    outline: solid 0px black;
+    transition: .4s;
+}
+
+.building-item:hover {
+    outline: solid 4px black;
+    transition: .08s ease-in;
 }

@@ -1,4 +1,4 @@
-export {IncrementalGame};
+export {IncrementalGame, BuildingType, UpgradeType};
 
 // Enums
 enum BuildingType {
@@ -19,7 +19,7 @@ enum UpgradeType {
 class IncrementalGame {
     // Variables
     money: number;
-    buildings: Array<Building>;
+    buildings: Array<Building> = [];
 
     constructor(initialMoney) {
         this.money = initialMoney;
@@ -33,6 +33,8 @@ class IncrementalGame {
     // Construction
     build(type: BuildingType, location: number) {
         this.buildings.push(new Building(type));
+        console.log(this.buildings);
+        
     }
 }
 
