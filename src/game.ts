@@ -31,10 +31,21 @@ class IncrementalGame {
     }
 
     // Construction
-    build(type: BuildingType, location: number) {
+    build(type: BuildingType, location: number): boolean {
+        if (this.money < 100) {
+            return false;
+        }
         this.buildings.push(new Building(type));
         console.log(this.buildings);
-        
+        this.money -= 100;
+        return true;
+    }
+
+    // Processing
+    updateBuildings() {
+        this.buildings.forEach(building => {
+            this.money += building.getMoney();
+        });
     }
 }
 
@@ -46,7 +57,13 @@ class Building {
         this.type = building_type;
     }
 
+    // Install Upgrade
     upgrade(upgrade) {
         this.upgrades.push(upgrade);
+    }
+
+    // Get amount of resources produced
+    getMoney(): number {
+        return 5;
     }
 }
