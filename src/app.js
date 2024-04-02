@@ -3,7 +3,7 @@ import { IncrementalGame, BuildingType, UpgradeType } from "./game.ts";
 const Game = new IncrementalGame(100);
 
 document.querySelector("#menu-building-tree").addEventListener('click', (element) => {
-    tile_id = element.target.closest(".ship-grid").id.split('-')[1];
+    let tile_id = element.target.closest(".ship-grid").id.split('-')[1];
     if (!Game.build(BuildingType.tree, tile_id)) {
         return;
     }
