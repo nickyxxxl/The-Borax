@@ -112,6 +112,10 @@ img {
     transform: rotate(-45deg);
 }
 
+.bought {
+    opacity: 0.3;
+}
+
 .ship-grid > .tile-tree {
     height: 100%;
     width: 100%;

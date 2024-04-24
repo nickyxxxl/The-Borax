@@ -45,14 +45,15 @@ class IncrementalGame {
     }
 
     upgrade(type: UpgradeTypes, location: number): boolean {
+        // Not enough money
         if (this.money < type) {
             return false;
-        }
-        console.log(this.buildings[location]);
-        
+        }        
+        // Upgrade already installed
         if (this.buildings[location].upgrades.includes(type)) {
             return false;
         }
+        // Success
         this.buildings[location].upgrade(type);
         this.money -= type;
         return true;
@@ -98,22 +99,33 @@ class Building {
         this.upgrades.push(upgrade);
         switch (upgrade) {
             case UpgradeTypes.speed_1:
-                this.cooldown = 800;
+                if (this.cooldown > 800) {
+                    this.cooldown = 800;
+                }
                 break;
             case UpgradeTypes.speed_2:
-                this.cooldown = 400;
+                if (this.cooldown > 400) {
+                    this.cooldown = 400;
+                }
                 break;
             case UpgradeTypes.speed_3:
                 this.cooldown = 200;
                 break;
             case UpgradeTypes.efficiency_1:
-                this.multiplier = 2;
+                if (this.multiplier < 2) {
+                    this.multiplier = 2;
+                }
                 break;
             case UpgradeTypes.efficiency_2:
-                this.multiplier = 3;
+                if (this.multiplier < 3) {
+                    this.multiplier = 3;
+                }
                 break;
             case UpgradeTypes.efficiency_3:
                 this.multiplier = 5;
+                break;
+            default:
+
                 break;
         }
     }
