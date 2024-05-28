@@ -10,11 +10,11 @@ enum BuildingTypes {
 enum UpgradeTypes {
     none = 0,
     speed_1 = 20,
-    speed_2 = 40,
-    speed_3 = 60,
-    efficiency_1 = 50,
-    efficiency_2 = 100,
-    efficiency_3 = 150,
+    speed_2 = 50,
+    speed_3 = 220,
+    efficiency_1 = 100,
+    efficiency_2 = 200,
+    efficiency_3 = 400,
 }
 
 class IncrementalGame {
@@ -65,6 +65,37 @@ class IncrementalGame {
             this.money += building.getMoney();
         });
     }
+
+    saveGame() {
+        sessionStorage.setItem('save1', JSON.stringify(this));
+    }
+
+    loadGame(): boolean {
+        let loading = sessionStorage.getItem('save1');
+        console.log(this);
+        
+        if (loading == null) {
+            return false;
+        } else {
+            let loaded: IncrementalGame = JSON.parse(loading);
+            this.money = loaded.money;
+            let i = 0;
+            for(let building of loaded.buildings) {
+                if (building == null) {
+                    delete this.buildings[i]
+                    i++;
+                    continue
+                }
+                this.buildings[i] = new Building(building.type);
+                for(let upgrade of building.upgrades) {
+                    this.buildings[i].upgrade(upgrade);
+                }
+                i++;
+            }
+
+            return true;
+        }
+    }
 }
 
 class Building {
@@ -78,7 +109,7 @@ class Building {
     temperature: number;
     prevTime: number;
 
-    constructor(building_type) {
+    constructor(building_type,) {
         this.type = building_type;
         this.cooldown = 1000;
         this.temperature = 1000;
