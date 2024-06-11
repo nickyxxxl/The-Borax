@@ -49,14 +49,14 @@ body{
   /* Halve the circle */
   border-bottom-color: transparent;
   border-left-color: transparent;
-  /* transform: */
-  /* rotateZ(-45deg); */
+  transform:
+  rotateZ(-45deg);
   /* animation: rotateRing 2s infinite alternate ease-in-out; */
 }
 
 .ring_front{
   z-index: 2;
-  position:absolute;
+  position:relative;
   /* background-image: linear-gradient(to top right, #6ae9e9, #5e51e7); */
   padding: 0;
   height:35rem;
@@ -66,9 +66,14 @@ body{
   /* Halve the circle */
   border-top-color: transparent;
   border-right-color: transparent;
-  /* transform: */
-  /* rotateZ(-45deg); */
+  transform:
+  rotateZ(-45deg);
+
   /* animation: rotateRing 2s infinite alternate ease-in-out; */
+}
+
+.rings{
+  transform: rotateZ(-45deg);
 }
 
 /* @keyframes rotateRing {
