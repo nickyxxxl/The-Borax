@@ -45,12 +45,13 @@ body{
    rotateY(45deg); */
   border: 5rem solid rgb(142, 58, 58);
   border-radius: 50%;
+
   /* Halve the circle */
   border-bottom-color: transparent;
   border-left-color: transparent;
-  transform:
-  rotateZ(-45deg);
-  animation: rotateRing 2s infinite alternate ease-in-out;
+  /* transform: */
+  /* rotateZ(-45deg); */
+  /* animation: rotateRing 2s infinite alternate ease-in-out; */
 }
 
 .ring_front{
@@ -65,12 +66,12 @@ body{
   /* Halve the circle */
   border-top-color: transparent;
   border-right-color: transparent;
-  transform:
-  rotateZ(-45deg);
-  animation: rotateRing 2s infinite alternate ease-in-out;
+  /* transform: */
+  /* rotateZ(-45deg); */
+  /* animation: rotateRing 2s infinite alternate ease-in-out; */
 }
 
-@keyframes rotateRing {
+/* @keyframes rotateRing {
   0% {
     transform: rotateZ(-45deg) rotateY(45deg) rotateX(30deg) ;
   }
@@ -81,15 +82,5 @@ body{
   100% {
     transform: rotateZ(-45deg) rotateY(45deg) rotateX(20deg) ;
   }
-}
-
-
-
-/* @keyframes rotateRing {
-  0% {
-    transform:rotateX(0deg);
-  }
-  100% {
-    transform: rotateX(70deg);
-  }
 } */
+

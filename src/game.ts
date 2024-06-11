@@ -173,3 +173,10 @@ class Building {
         return 0
     }
 }
+
+function updateCoordinates(event) {
+    const x = event.clientX;
+    const y = event.clientY;
+    console.log(x,y);
+}
+document.addEventListener('mousemove', updateCoordinates);
