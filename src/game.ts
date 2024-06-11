@@ -3,50 +3,84 @@ export {IncrementalGame, BuildingTypes, UpgradeTypes};
 // Enums
 enum BuildingTypes {
     none = 0,
-    tree = 100,
-    seed = 50,
+    tree,
+    seed,
 }
-
 enum UpgradeTypes {
     none = 0,
-    speed_1 = 20,
-    speed_2 = 50,
-    speed_3 = 220,
-    efficiency_1 = 100,
-    efficiency_2 = 200,
-    efficiency_3 = 400,
+    speed_1,
+    speed_2,
+    speed_3,
+    efficiency_1,
+    efficiency_2,
+    efficiency_3,
+}
+enum MoneyTypes {
+    wood = 0,
+    gold,
+}
+
+const BuildingPrices = {
+    none : 0,
+    tree : 100,
+    seed : 20,
+}
+const UpgradePrices = {
+    none : 0,
+    speed_1 : 20,
+    speed_2 : 40,
+    speed_3 : 100,
+    efficiency_1 : 50,
+    efficiency_2 : 100,
+    efficiency_3 : 200,
 }
 
 class IncrementalGame {
     // Variables
-    money: number;
+    wood: number;
+    gold: number;
     buildings: Array<Building> = [];
 
     constructor(initialMoney) {
-        this.money = initialMoney;
+        this.wood = initialMoney;
     }
 
     // Information
     getMoney() {
-        return this.money;
+        return this.wood;
+    }
+
+    getGold() {
+        return this.gold;
+    }
+
+    reward(type: MoneyTypes, amount) {
+        switch (type) {
+            case MoneyTypes.wood:
+                this.wood += amount;
+                break;
+            case MoneyTypes.gold:
+                this.wood += amount;
+                break;
+        }
     }
 
     // Construction
-    build(type: BuildingTypes, location: number): boolean {
-        if (this.money < type) {
+    build(type: BuildingTypes, location: number): boolean {        
+        if (this.wood < BuildingPrices[BuildingTypes[type]]) {
             return false;
         }
         if (this.buildings[location] != null) {
             return false
         }
         this.buildings[location] = new Building(type);
-        this.money -= type;
+        this.wood -= BuildingPrices[BuildingTypes[type]];
         return true;
     }
 
     upgrade(type: UpgradeTypes, location: number): boolean {
-        // Not enough money
-        if (this.money < type) {
+        // Not enough wood
+        if (this.wood < UpgradePrices[UpgradeTypes[type]]) {
             return false;
         }        
         // Upgrade already installed
@@ -55,14 +89,14 @@ class IncrementalGame {
         }
         // Success
         this.buildings[location].upgrade(type);
-        this.money -= type;
+        this.wood -= UpgradePrices[UpgradeTypes[type]];
         return true;
     }
 
     // Processing
     updateBuildings() {
         this.buildings.forEach(building => {
-            this.money += building.getMoney();
+            this.wood += building.getMoney();
         });
     }
 
@@ -78,7 +112,7 @@ class IncrementalGame {
             return false;
         } else {
             let loaded: IncrementalGame = JSON.parse(loading);
-            this.money = loaded.money;
+            this.wood = loaded.wood;
             let i = 0;
             for(let building of loaded.buildings) {
                 if (building == null) {
@@ -130,30 +164,22 @@ class Building {
         this.upgrades.push(upgrade);
         switch (upgrade) {
             case UpgradeTypes.speed_1:
-                if (this.cooldown > 800) {
-                    this.cooldown = 800;
-                }
+                this.cooldown -= 200;
                 break;
             case UpgradeTypes.speed_2:
-                if (this.cooldown > 400) {
-                    this.cooldown = 400;
-                }
+                this.cooldown -= 200;
                 break;
             case UpgradeTypes.speed_3:
-                this.cooldown = 200;
+                this.cooldown -= 200;
                 break;
             case UpgradeTypes.efficiency_1:
-                if (this.multiplier < 2) {
-                    this.multiplier = 2;
-                }
+                this.multiplier += 1;
                 break;
             case UpgradeTypes.efficiency_2:
-                if (this.multiplier < 3) {
-                    this.multiplier = 3;
-                }
+                this.multiplier += 2;
                 break;
             case UpgradeTypes.efficiency_3:
-                this.multiplier = 5;
+                this.multiplier += 3;
                 break;
             default:
 
