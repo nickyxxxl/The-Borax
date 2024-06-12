@@ -9,7 +9,7 @@ document.querySelector("#building-menu").addEventListener('click', (element) => 
     if (!Game.build(BuildingTypes.tree, tile_id)) {
         return;
     }
-    $( `#tile-${tile_id} .tile-empty`).replaceWith("<div onclick='ToggleUpgradesMenu(this)' class='tile-building tile-tree'></div>");
+    refreshPlayfield();
 })
 
 document.querySelector("#upgrade-menu").addEventListener('click', (element) => {
@@ -21,7 +21,7 @@ document.querySelector("#upgrade-menu").addEventListener('click', (element) => {
     if (!Game.upgrade(upgrade_id,tile_id)) {
         return;
     }
-    $(`#upgrade-menu .${UpgradeTypes[upgrade_id]}`)[0].classList.add("bought")
+    refreshPlayfield();
 })
 
 document.querySelector("#save").addEventListener('click', (element) => {
@@ -42,6 +42,26 @@ function refreshPlayfield() {
             $( `#tile-${i}`).replaceWith(`<div class='ship-grid' id='tile-${i}'> <div onclick='ToggleBuildingsMenu(this)' class='tile-empty'></div> </div>`);
         }
     }
+    for (let i = 0; i < 12; i++){
+        if (Game.buildings[i] != undefined){
+            $(`#tile-${i} .tile-building`)[0].removeEventListener("earn", handlePopup)
+            $(`#tile-${i} .tile-building`)[0].addEventListener("earn", handlePopup)
+        }
+    }
+}
+
+function handlePopup(value) {
+    let randomID = Math.floor(Math.random()*1000);
+    $(`<p class='${randomID} msg'>`).append(value.detail.value).appendTo($(`#tile-${value.detail.index}`))
+    $(`.${randomID}`).animate({
+        top: -150,
+        opacity: 0
+    }, 300, "linear",
+        function() {
+            $(`.${randomID}`).remove();
+        }
+)
+
 }
 
 const upgrade_menu = document.querySelector("#upgrade-menu")
@@ -93,7 +113,13 @@ for (let i = 0; i < 12; i++) {
 }
 
 setInterval(() => {
-    Game.updateBuildings();
+    let earned = Game.updateBuildings();
+    for (let i = 0; i < earned.length; i++){
+        if (earned[i] > 0) {
+            const event = new CustomEvent('earn', {detail : {value : earned[i], index: i}});
+            $(`#tile-${i} .tile-building`)[0].dispatchEvent(event);
+        }
+    }
     document.querySelector("#money-display").innerHTML = Game.getMoney()
-}, 40)
+}, 10)
 
