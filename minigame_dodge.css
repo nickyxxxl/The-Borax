@@ -1,0 +1,32 @@
+body{
+  margin: 0;
+  background-image: radial-gradient(circle closest-corner at 55% 60%, #1e0c31, #0d021f);
+}
+
+.planet-container{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.planet{
+  z-index: 1;
+  position: absolute;
+  background-image: linear-gradient(to top left, #e9c46a, #e76f51);
+  color: rgba(206, 57, 57, 0);
+  font-weight: bold;
+  font-size:medium;
+  cursor:pointer;
+  padding: 0;
+  height:30rem;
+  width:30rem;
+  border-style:none;
+  border-radius: 15rem;
+  margin:20px;
+  transition: box-shadow 0.15s, transform 0.2s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  vertical-align:bottom;
+}
