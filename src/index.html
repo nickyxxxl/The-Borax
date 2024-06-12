@@ -4,6 +4,7 @@
     <title>The Borax</title>
     <link rel="stylesheet" href="index.css">
     <script defer type="module" src="index.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <!-- <script defer src="jquery-3.7.1.js"></script> -->
 </head>
 
@@ -15,10 +16,7 @@
 </div>
 
 <!--Navigating to planets overview  -->
-<a class="navigation" href="planets.html">Go to Outer Space</a>
-<a href="minigame_spinning.html">Spinning game</a>
-<a href="minigame_dodge.html">Dodging game</a>
-
+<a class="navigation" onclick="redirect('planets.html')">Go to Outer Space</a>
 
 <div class="ship-container">
 
@@ -45,8 +43,67 @@
 
 </div>
 
-<div id="save"><button>SAVE GAME</button></div>
-<div id="load"><button>LOAD GAME</button></div>
+<div class="corner">
+    <div class="cornbtn" id="save"><span class="material-symbols-outlined">save</span>save</div>
+    <div class="cornbtn" id="load"><span class="material-symbols-outlined">download</span>load</div>
+    <div class="cornbtn"><a onclick="redirect('minigame_spinning.html')">Spinning game</a></div>
+    <div class="cornbtn"><a onclick="redirect('minigame_dodge.html')">Dodging game</a></div>
+</div>
+
+<div class="star-container">
+<div class="stars">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+</div>
+</div>
 
 </body>
 </html>

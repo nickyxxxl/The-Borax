@@ -24,13 +24,15 @@ document.querySelector("#upgrade-menu").addEventListener('click', (element) => {
     refreshPlayfield();
 })
 
-document.querySelector("#save").addEventListener('click', (element) => {
+$("#save")[0].addEventListener('click', (element) => {
     Game.saveGame();
+    console.log('saved');
 })
 
 document.querySelector("#load").addEventListener('click', (element) => {
     Game.loadGame();
     refreshPlayfield();
+    console.log('loaded');
 })
 
 function refreshPlayfield() {
@@ -52,7 +54,7 @@ function refreshPlayfield() {
 
 function handlePopup(value) {
     let randomID = Math.floor(Math.random()*1000);
-    $(`<p class='${randomID} msg'>`).append(value.detail.value).appendTo($(`#tile-${value.detail.index}`))
+    $(`<p class='${randomID} msg' style='color: red'>`).append(value.detail.value).appendTo($(`#tile-${value.detail.index}`))
     $(`.${randomID}`).animate({
         top: -150,
         opacity: 0
@@ -108,6 +110,12 @@ document.addEventListener("contextmenu", (e) => {
     CloseMenus();
 })
 
+function redirect(target) {
+    Game.saveGame();
+    window.location.href = target;
+}
+window.redirect = redirect;
+
 for (let i = 0; i < 12; i++) {
     $( ".ship-container" ).append(`<div class='ship-grid' id='tile-${i}'> <div onclick='ToggleBuildingsMenu(this)' class='tile-empty'></div> </div>`)
 }
@@ -122,4 +130,3 @@ setInterval(() => {
     }
     document.querySelector("#money-display").innerHTML = Game.getMoney()
 }, 10)
-
