@@ -51,7 +51,7 @@ body{
   border-left-color: transparent;
   transform:
   rotateZ(-45deg);
-  /* animation: rotateRing 2s infinite alternate ease-in-out; */
+  animation: rotateRing 2s infinite alternate ease-in-out;
 }
 
 .ring_front{
@@ -69,14 +69,14 @@ body{
   transform:
   rotateZ(-45deg);
 
-  /* animation: rotateRing 2s infinite alternate ease-in-out; */
+  animation: rotateRing 2s infinite alternate ease-in-out;
 }
 
 .rings{
   transform: rotateZ(-45deg);
 }
 
-/* @keyframes rotateRing {
+@keyframes rotateRing {
   0% {
     transform: rotateZ(-45deg) rotateY(45deg) rotateX(30deg) ;
   }
@@ -87,5 +87,5 @@ body{
   100% {
     transform: rotateZ(-45deg) rotateY(45deg) rotateX(20deg) ;
   }
-} */
+}
 
