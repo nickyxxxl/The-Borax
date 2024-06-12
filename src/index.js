@@ -110,6 +110,12 @@ document.addEventListener("contextmenu", (e) => {
     CloseMenus();
 })
 
+function redirect(target) {
+    Game.saveGame();
+    window.location.href = target;
+}
+window.redirect = redirect;
+
 for (let i = 0; i < 12; i++) {
     $( ".ship-container" ).append(`<div class='ship-grid' id='tile-${i}'> <div onclick='ToggleBuildingsMenu(this)' class='tile-empty'></div> </div>`)
 }
