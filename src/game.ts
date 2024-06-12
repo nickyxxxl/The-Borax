@@ -94,10 +94,19 @@ class IncrementalGame {
     }
 
     // Processing
-    updateBuildings() {
-        this.buildings.forEach(building => {
-            this.wood += building.getMoney();
-        });
+    updateBuildings(): Array<number> {
+        let earned: Array<number> = [];
+        for (let i = 0; i < 12; i++) {
+            let building = this.buildings[i];
+            if (building == undefined) {
+                earned.push(0);
+                continue;
+            }
+            let newCash = building.getMoney();
+            earned.push(newCash);
+            this.wood += newCash;
+        }
+        return earned;
     }
 
     saveGame() {
@@ -121,6 +130,7 @@ class IncrementalGame {
                     continue
                 }
                 this.buildings[i] = new Building(building.type);
+                this.buildings[i].temperature = Math.random()*100;
                 for(let upgrade of building.upgrades) {
                     this.buildings[i].upgrade(upgrade);
                 }
@@ -203,6 +213,5 @@ class Building {
 function updateCoordinates(event) {
     const x = event.clientX;
     const y = event.clientY;
-    console.log(x,y);
 }
 document.addEventListener('mousemove', updateCoordinates);
